@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        nxf_ver: ['19.07.0', '']
+        nxf_ver: ['18.10.1','19.07.0', '']
         #aligner: ["--aligner 'hisat2'", "--aligner 'star'", "--pseudo_aligner 'salmon'"]
         #options: ['--skipQC', '--remove_rRNA', '--saveUnaligned', '--skipTrimming', '--star_index false']
     steps:
@@ -19,7 +19,7 @@ jobs:
           sudo mv nextflow /usr/local/bin/
       - name: Download image
         run: |
-          docker pull charlottek/trimming
+          docker pull charlottek/*
       - name: Basic workflow tests
         run: |
           nextflow run ${GITHUB_WORKSPACE} -profile test,docker 
